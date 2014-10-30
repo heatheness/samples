@@ -28,10 +28,9 @@ def gen_lab(m,n):
         """генерирует случайный мрашрут"""
         visited = []
         route = []
-        plan = [[(0,0),None]]
+        plan = [[(0,0),None]] # координаты точки и координаты точки-родителя
         u = m-1
         v = n-1
-
         while True:
             cur = plan.pop()
             directs = []
@@ -52,9 +51,14 @@ def gen_lab(m,n):
                 if (i-1) >= 0 and ((i-1,j)not in visited):
                     directs.append([(i-1,j),cur[0]])
                 if not directs:
+                    # если идти больше некуда, и выход не достигнут, то нужно откатиться к той точке, из которой
+                    # можно двигаться. т.е. удаляем из маршрута те точки, которые завели в тупик
                     route.pop()
-                    new_cur_par = plan[-1][1]
+                    new_cur_par = plan[-1][1]# верхняя точка в плане
                     while True:
+                        # если верхняя точка листа маршрута не является родителем верхней точки в плане,
+                        # удаляем эту точку из маршрута (верхнюю точку маршрута). это и есть откат к перспективной
+                        #  точке. идет коррекция маршрута - отсекаем тупиковую ветвь
                         if route[-1] != new_cur_par:
                             route.pop()
                         else:
@@ -62,7 +66,7 @@ def gen_lab(m,n):
                     continue
                 else:
                     random.shuffle(directs) # перемешиваем направления движения
-                    plan.extend(directs)
+                    plan.extend(directs) # добавляем направления в план обхода
         route.append((u,v))
         return route
 
