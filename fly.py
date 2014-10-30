@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 
-__author__ = 'dmitrymakhotin'
-
-
 
 import math
 import matplotlib.pyplot as plt

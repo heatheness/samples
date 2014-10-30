@@ -50,7 +50,7 @@ words_in_club_titles = []
 quantity_of_members = []
 
 words_to_exclude = set([u'на', u'что', u'когда', u'где' ,u'куда', u'тут', u'из' ,u'по', u'не',
-                        u'от', u'от', u'не', u'для', u'за']) #слова, которые мы отбрасываем
+                        u'от', u'для', u'за']) #слова, которые мы отбрасываем
 quantity_of_clubs = 100 # должно быть кратно 10
 rx1 = re.compile(u'[^\w-]', re.UNICODE)
 rx2 = re.compile(u'[\d+]', re.UNICODE)
