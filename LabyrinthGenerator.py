@@ -19,7 +19,7 @@ def gen_lab(m,n):
         return s
 
     def gen_filed(m):
-        """генерирует поле точек размером m x m"""
+        """генерирует поле точек размером m x n"""
         l = [ ['.'] * n for i in xrange(m)]
         return l
 
